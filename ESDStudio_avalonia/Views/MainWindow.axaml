@@ -48,7 +48,8 @@
             
             <Menu VerticalAlignment="Center">
                 <MenuItem Header="File" IsTabStop="False">
-                    <MenuItem Header="_New Project" InputGesture="{OnPlatform Ctrl+N, macOS=⌘+N}"/>
+                    <MenuItem Header="_New Project" InputGesture="{OnPlatform Ctrl+N, macOS=⌘+N}"
+                              Command="{Binding OpenNewProjectWindowCmd}"/>
                     <MenuItem Header="_Open Project" InputGesture="{OnPlatform Ctrl+O, macOS=⌘+O}"/>
                     <MenuItem Header="_Recent Projects" />
                     <Separator/>

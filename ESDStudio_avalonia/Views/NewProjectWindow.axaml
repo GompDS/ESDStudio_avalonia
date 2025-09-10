@@ -1,0 +1,104 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:ESDStudio_avalonia.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" Width="700" Height="350"
+        WindowStartupLocation="CenterOwner"
+        x:Class="ESDStudio_avalonia.Views.NewProjectWindow"
+        x:DataType="vm:NewProjectWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="New Project">
+    <Window.DataContext>
+        <vm:NewProjectWindowViewModel/>
+    </Window.DataContext>
+    
+    <Grid Background="{StaticResource ToolTipBackground}">
+         <Grid.RowDefinitions>
+             <RowDefinition Height="*"/>
+             <RowDefinition Height="30"/>
+         </Grid.RowDefinitions>
+        
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="140"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="60"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" FontSize="10" VerticalAlignment="Center"
+                       Text="Name"/>
+            <TextBox x:Name="NameTextBox"
+                     Grid.Row="0" Grid.Column="1" Margin="5,5,5,0" FontSize="10" VerticalContentAlignment="Center"/>
+            
+            <Label x:Name="NameErrorLabel"
+                   Grid.Row="1" Grid.Column="1" FontSize="10" VerticalContentAlignment="Center"
+                   Foreground="IndianRed"/>
+            
+            <TextBlock Grid.Row="2" Grid.Column="0" Margin="5" FontSize="10" VerticalAlignment="Center"
+                       Text="Project Base Directory"/>
+            <TextBox x:Name="BaseDirectoryTextBox"
+                     Grid.Row="2" Grid.Column="1" Margin="5" FontSize="10" VerticalContentAlignment="Center"/>
+            <Button Grid.Row="2" Grid.Column="2" Width="50" Height="50" Background="Transparent"
+                    Command="{Binding BrowseBaseDirectoryCmd}">
+                <Image Source="avares://ESDStudio_avalonia/Assets/UI/folder.png" Stretch="Uniform"/>
+            </Button>
+            
+            <Label x:Name="BaseDirectoryErrorLabel"
+                   Grid.Row="3" Grid.Column="1" FontSize="10" VerticalContentAlignment="Center"
+                   Foreground="IndianRed"/>
+            
+            
+            
+            <TextBlock Grid.Row="4" Grid.Column="0" Margin="5" FontSize="10" VerticalAlignment="Center"
+                       Text="Game Data Directory"/>
+            <TextBox x:Name="GameDataDirectoryTextBox"
+                     Grid.Row="4" Grid.Column="1" Margin="5" FontSize="10" VerticalContentAlignment="Center"/>
+            <Button Grid.Row="4" Grid.Column="2" Width="50" Height="50" Background="Transparent"
+                    Command="{Binding BrowseGameDataDirectoryCmd}">
+                <Image Source="avares://ESDStudio_avalonia/Assets/UI/folder.png" Stretch="Uniform"/>
+            </Button>
+            
+            <Label x:Name="GameDataDirectoryErrorLabel"
+                   Grid.Row="5" Grid.Column="1" FontSize="10" VerticalContentAlignment="Center"
+                   Foreground="IndianRed"/>
+            
+            <TextBlock Grid.Row="6" Grid.Column="0" Margin="5" FontSize="10" VerticalAlignment="Center"
+                       Text="Build Directory"/>
+            <TextBox x:Name="BuildDirectoryTextBox"
+                     Grid.Row="6" Grid.Column="1" Margin="5" FontSize="10" VerticalContentAlignment="Center"/>
+            <Button Grid.Row="6" Grid.Column="2" Width="50" Height="50" Background="Transparent"
+                    Command="{Binding BrowseBuildDirectoryCmd}">
+                <Image Source="avares://ESDStudio_avalonia/Assets/UI/folder.png" Stretch="Uniform"/>
+            </Button>
+            
+            <Label x:Name="BuildDirectoryErrorLabel"
+                   Grid.Row="7" Grid.Column="1" FontSize="10" VerticalContentAlignment="Center"
+                   Foreground="IndianRed"/>
+            
+            <CheckBox Grid.Row="8" Grid.Column="1" Margin="5" FontSize="10" VerticalAlignment="Center"
+                       Content="Import Custom Binaries?"/>
+        </Grid>
+        
+        <StackPanel Grid.Row="1" Margin="5,-15,5,0" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="ConfirmButton"
+                    Content="Create Project" Margin="5,0,5,0" FontSize="12"
+                    IsEnabled="{Binding ValidationContext.IsValid}"
+                    Click="ConfirmButton_OnClick"/>
+            <Button x:Name="CancelCommand"
+                    Content="Cancel" Margin="5,0,5,0" FontSize="12"
+                    Click="CancelCommand_OnClick"/>
+        </StackPanel>
+    </Grid>
+</Window>

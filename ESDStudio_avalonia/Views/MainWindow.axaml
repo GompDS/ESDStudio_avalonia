@@ -1,0 +1,81 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:ESDStudio_avalonia.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" Width="1366" Height="768" IsTabStop="False"
+        WindowStartupLocation="CenterScreen"
+        x:Class="ESDStudio_avalonia.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="ESDStudio">
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
+    
+    <Window.Resources>
+        <ContextMenu x:Key="BndContextMenu">
+            <MenuItem Header="Save" InputGesture="{OnPlatform Ctrl+S, macOS=⌘+S}"/>
+            <MenuItem Header="Edit Description"/>
+            <MenuItem Header="New ESD" InputGesture="{OnPlatform Ctrl+Shift+N, macOS=⌘+Shift+N}"/>
+            <MenuItem Header="Paste ESD" InputGesture="{OnPlatform Ctrl+V, macOS=⌘+V}"/>
+        </ContextMenu>
+        <ContextMenu x:Key="EsdContextMenu">
+            <MenuItem Header="Save" InputGesture="{OnPlatform Ctrl+S, macOS=⌘+S}"/>
+            <MenuItem Header="Edit ID" />
+            <MenuItem Header="Edit Description"/>
+            <MenuItem Header="Copy" InputGesture="{OnPlatform Ctrl+C, macOS=⌘+C}"/>
+            <MenuItem Header="Delete" InputGesture="Delete"/>
+        </ContextMenu>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+        
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <Menu VerticalAlignment="Center">
+                <MenuItem Header="File" IsTabStop="False">
+                    <MenuItem Header="_New Project" InputGesture="{OnPlatform Ctrl+N, macOS=⌘+N}"/>
+                    <MenuItem Header="_Open Project" InputGesture="{OnPlatform Ctrl+O, macOS=⌘+O}"/>
+                    <MenuItem Header="_Recent Projects" />
+                    <Separator/>
+                    <MenuItem Header="_New BND"/>
+                    <Separator/>
+                    <MenuItem Header="_Save All" InputGesture="{OnPlatform Ctrl+Shift+S, macOS=⌘+Shift+S}"/>
+                    <Separator/>
+                    <MenuItem Header="_Close Tab" InputGesture="{OnPlatform Ctrl+W, macOS=⌘+W}"/>
+                    <Separator/>
+                    <MenuItem Header="_Editor Settings"/>
+                </MenuItem>
+                
+                <MenuItem Header="Edit" IsTabStop="False">
+                    <MenuItem Header="_Undo" InputGesture="{OnPlatform Ctrl+Z, macOS=⌘+Z}"/>
+                    <MenuItem Header="_Redo" InputGesture="{OnPlatform Ctrl+Y, macOS=⌘+Shift+Z}"/>
+                    <Separator/>
+                    <MenuItem Header="_Cut" InputGesture="{OnPlatform Ctrl+X, macOS=⌘+X}"/>
+                    <MenuItem Header="_Copy" InputGesture="{OnPlatform Ctrl+C, macOS=⌘+C}"/>
+                    <MenuItem Header="_Paste" InputGesture="{OnPlatform Ctrl+V, macOS=⌘+V}"/>
+                    <Separator/>
+                    <MenuItem Header="_Find" InputGesture="{OnPlatform Ctrl+F, macOS=⌘+F}"/>
+                    <MenuItem Header="_Replace" InputGesture="{OnPlatform Ctrl+H, macOS=⌘+H}"/>
+                    <Separator/>
+                    <MenuItem Header="_Select All" InputGesture="{OnPlatform Ctrl+A, macOS=⌘+A}"/>
+                </MenuItem>
+                <MenuItem Header="About" IsTabStop="False" BorderBrush="Transparent"/>
+            </Menu>
+        </Grid>
+    </Grid>
+</Window>

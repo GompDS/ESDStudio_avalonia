@@ -6,6 +6,7 @@ using Avalonia.Platform.Storage;
 using CommunityToolkit.Mvvm.ComponentModel;
 using ESDStudio_avalonia.Views;
 using ReactiveUI;
+using MainWindow = ESDStudio_avalonia.Views.MainWindow;
 
 namespace ESDStudio_avalonia.ViewModels;
 

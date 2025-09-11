@@ -6,6 +6,7 @@ using System.Linq;
 using Avalonia.Markup.Xaml;
 using ESDStudio_avalonia.ViewModels;
 using ESDStudio_avalonia.Views;
+using MainWindow = ESDStudio_avalonia.Views.MainWindow;
 
 namespace ESDStudio_avalonia;
 

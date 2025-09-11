@@ -4,13 +4,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESDStudio_avalonia", "ESDSt
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Debug|Any CPU = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{12913AB0-BBBD-4776-BCB0-43C72ED024D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{12913AB0-BBBD-4776-BCB0-43C72ED024D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12913AB0-BBBD-4776-BCB0-43C72ED024D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12913AB0-BBBD-4776-BCB0-43C72ED024D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12913AB0-BBBD-4776-BCB0-43C72ED024D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12913AB0-BBBD-4776-BCB0-43C72ED024D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal

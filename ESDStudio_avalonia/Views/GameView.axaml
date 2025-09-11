@@ -1,0 +1,31 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:ESDStudio_avalonia.ViewModels"
+             xmlns:valueConverters="clr-namespace:ESDStudio_avalonia.ValueConverters"
+             mc:Ignorable="d" Width="400" Height="30"
+             x:Class="ESDStudio_avalonia.Views.GameView"
+             x:DataType="vm:GameViewModel">
+    <UserControl.DataContext>
+        <vm:GameViewModel/>
+    </UserControl.DataContext>
+    
+    <UserControl.Resources>
+        <valueConverters:PlatformToStringConverter x:Key="PlatformToStringConverter"/>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        
+        <Image Grid.Column="0" Source="{Binding Icon}"/>
+        <Label Grid.Column="1" FontSize="12" Margin="5,0,0,0" VerticalContentAlignment="Center" 
+               Content="{Binding Title}"/>
+        <Label Grid.Column="2" FontSize="16" MinWidth="20" Margin="5,0,0,0"
+               Content="{Binding Platform, Converter={StaticResource PlatformToStringConverter}}"/>
+    </Grid>
+</UserControl>

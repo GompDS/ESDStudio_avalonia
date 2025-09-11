@@ -1,16 +1,16 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:ESDStudio_avalonia.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:ESDStudio_avalonia.ViewModels"
         mc:Ignorable="d" Width="1366" Height="768" IsTabStop="False"
         WindowStartupLocation="CenterScreen"
         x:Class="ESDStudio_avalonia.Views.MainWindow"
-        x:DataType="vm:MainWindowViewModel"
+        x:DataType="viewModels:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="ESDStudio">
     <Window.DataContext>
-        <vm:MainWindowViewModel/>
+        <viewModels:MainWindowViewModel/>
     </Window.DataContext>
     
     <Window.Resources>
@@ -28,6 +28,10 @@
             <MenuItem Header="Delete" InputGesture="Delete"/>
         </ContextMenu>
     </Window.Resources>
+    
+    <Window.KeyBindings>
+        <KeyBinding Gesture="{OnPlatform Ctrl+N, macOS=⌘+N}" Command="{Binding OpenNewProjectWindowCmd}"/>
+    </Window.KeyBindings>
     
     <Grid>
         <Grid.RowDefinitions>

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -23,9 +24,9 @@ public class NewProjectWindowViewModel : DialogViewModelBase
             dir => !string.IsNullOrWhiteSpace(dir) && Directory.Exists(dir),
             "Base Directory must be an existing directory.");
         this.ValidationRule(
-            viewModel => viewModel.Game,
-            game => !_validGames.Contains(game),
-            "You must specify a game for the project.");
+            viewModel => viewModel.Game.Title,
+            game => game != "None",
+            "Must specify a game.");
         this.ValidationRule(
             viewModel => viewModel.GameDataDirectory,
             dir => !string.IsNullOrWhiteSpace(dir) && Directory.Exists(dir),
@@ -34,53 +35,56 @@ public class NewProjectWindowViewModel : DialogViewModelBase
             viewModel => viewModel.BuildDirectory,
             dir => !string.IsNullOrWhiteSpace(dir) && Directory.Exists(dir),
             "Build Directory must be an existing directory.");
+
+        Game = ValidGames[0];
         
         BrowseBaseDirectoryCmd =  ReactiveCommand.CreateFromTask(BrowseBaseDirectory);
         BrowseGameDataDirectoryCmd = ReactiveCommand.CreateFromTask(BrowseGameDataDirectory);
         BrowseBuildDirectoryCmd = ReactiveCommand.CreateFromTask(BrowseBuildDirectory);
     }
 
-    private static readonly string[] _validGames = new[]
-    {
-        "DARK SOULS: PREPARE TO DIE EDITION (PC)",
-        "DARK SOULS REMASTERED (PC)",
-        "BLOODBORNE (PS4)",
-        "DARK SOULS III (PC)",
-        "SEKIRO: SHADOWS DIE TWICE (PC)",
-        "ELDEN RING (PC)",
-        "ARMORED CORE VI: FIRES OF RUBICON (PC)",
-        "ELDEN RING NIGHTREIGN (PC)"
-    };
-
-    private string _name;
+    public ObservableCollection<GameViewModel> ValidGames { get; } = 
+        [
+            new(),
+            GameViewModel.DarkSoulsWin64,
+            GameViewModel.BloodbornePs4,
+            GameViewModel.DarkSoulsIIIWin64,
+            GameViewModel.DarkSoulsRemasteredWin64,
+            GameViewModel.SekiroWin64,
+            GameViewModel.EldenRingWin64,
+            GameViewModel.ArmoredCoreVIFiresOfRubiconWin64,
+            GameViewModel.EldenRingNightreignWin64
+        ];
+    
+    private string _name = string.Empty;
     public string Name
     {
         get => _name;
         set => this.RaiseAndSetIfChanged(ref _name, value);
     }
     
-    private string _baseDirectory;
+    private string _baseDirectory = string.Empty;
     public string BaseDirectory
     {
         get => _baseDirectory;
         set => this.RaiseAndSetIfChanged(ref _baseDirectory, value);
     }
-    
-    private string _game;
-    public string Game
+
+    private GameViewModel _game = new();
+    public GameViewModel Game
     {
         get => _game;
         set => this.RaiseAndSetIfChanged(ref _game, value);
     }
     
-    private string _gameDataDirectory;
+    private string _gameDataDirectory = string.Empty;
     public string GameDataDirectory
     {
         get => _gameDataDirectory;
         set => this.RaiseAndSetIfChanged(ref _gameDataDirectory, value);
     }
     
-    private string _buildDirectory;
+    private string _buildDirectory = string.Empty;
     public string BuildDirectory
     {
         get => _buildDirectory;
